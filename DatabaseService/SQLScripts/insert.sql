@@ -1,0 +1,1 @@
+INSERT INTO temp(userid,data) values (1, '{"title": "Sleeping Beauties", "genres": ["Fiction", "Thriller", "Horror"], "published": false}'); 

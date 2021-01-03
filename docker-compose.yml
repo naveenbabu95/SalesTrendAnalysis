@@ -1,0 +1,58 @@
+version: "3"
+networks:
+  default:
+    external:
+      name: local_network
+services:
+  inputservice:
+    container_name: "inputservice"
+    build: ./InputService
+    ports:
+      - "0.0.0.0:8000:8000"
+    networks:
+      default:
+        ipv4_address: 172.20.128.8
+
+  postgres:
+    image: "postgres"
+    container_name: "postgres"
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=sales
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    depends_on:
+      - inputservice
+
+  databasescript:
+    container_name: "dbscript"
+    build: ./DatabaseService
+    depends_on:
+      - postgres
+    environment:
+      WAIT_HOSTS: postgres:5432
+    ports:
+      - "0.0.0.0:8004:8004"
+    networks: 
+      default:
+        ipv4_address: 172.20.128.6
+        
+  analyticsservice:
+    container_name: "analytics"
+    build: ./AnalyticsService
+    ports:
+      - "0.0.0.0:8002:8002"
+    networks: 
+      default:
+        ipv4_address: 172.20.128.2
+
+  outputservice:
+    build: ./OutputService
+    ports:
+      - "0.0.0.0:8003:8003"
+    networks: 
+      default:
+        ipv4_address: 172.20.128.5

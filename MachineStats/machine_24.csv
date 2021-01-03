@@ -1,0 +1,4 @@
+,user,service,instances,successful,failed
+0,userid=10,database,2,4,0
+0,userid=10,analytics,3,4,0
+0,userid=10,input,3,4,0

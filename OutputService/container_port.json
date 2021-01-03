@@ -1,0 +1,6 @@
+{
+	"inputservice_url" : "http://0.0.0.0:8000",
+	"database_url" : "http://172.20.128.6:8004",
+	"analytics_url" : "http://172.20.128.2:8002",
+	"output_url" : "http://172.20.128.5:8003"
+}

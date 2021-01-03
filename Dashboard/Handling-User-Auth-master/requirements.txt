@@ -1,0 +1,5 @@
+User able to select pipelining stream
+USer able to upload stream//save it to some folder
+
+
+

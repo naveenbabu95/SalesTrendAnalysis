@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+{% csrf_token %}
+<h1>User Dashboard</h1>
+<p>Choose Ordering Scheme</p>
+<!-- <form>
+  <input type="radio" name="rad" value="order1" checked> Show output first than Store data<br>
+  <input type="radio" name="rad" value="order2"> Store data first and than show output<br>
+  </form> -->
+<br>
+<form class="post-form" enctype="multipart/form-data">
+  {% csrf_token %}
+    1. <select name="dropdown12" id="order1">
+    <option selected="selected" disabled>Select</option>
+            <option value="input">Input service</option>
+    </select>
+    <!-- <div class="dropdown">
+    1. <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" name="dd1" id="order1">Input service
+    	<span class="caret"></span></button>
+    	<ul class="dropdown-menu">
+      		<li><a href="#">Input Service</a></li>
+    	</ul>
+  	</div> -->
+<br><br>
+    2. <select name="dropdown12" id="order2">
+    <option selected="selected" disabled>Select</option>
+            <option value="database">Database Service</option>
+            <option value="analytics">Analytics Service</option>
+    </select>
+<br><br>
+	3. <select name="dropdown12" id="order3">
+    <option selected="selected" disabled>Select</option>
+            <option value="database">Database Service</option>
+            <option value="analytics">Analytics Service</option>
+    </select>
+<br><br>
+	4. <select name="dropdown12" id="order4">
+    <option selected="selected" disabled>Select</option>
+            <option value="output">Output Service</option>
+    </select>
+<br><br>
+
+        <button id="saveorder" class="save btn btn-default">Save</button>
+</form>
+<pre><button onClick="parent.location='http://127.0.0.1:8500/accounts/login/viewdata/'">ViewData</button></pre>
+<br>
+<br>
+<button onClick="parent.location='http://127.0.0.1:8500/accounts/logout/'">Logout</button>
+<body>
+
+
+<script>
+	$(".dropdown-menu li a").click(function(){
+  $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
+  $(this).parents(".dropdown").find('.btn').val($(this).data('value'));
+});
+
+$('#saveorder').click(function(){
+	// order = [$('#order1').text,$('#order2').text,$('#order3').text,$('#order4').text]
+	order = [$('#order1')[0].value,$('#order2')[0].value,$('#order3')[0].value,$('#order4')[0].value]
+	console.log("before")
+	console.log(order)
+  var order = order.filter(function(e) { return e !== 'Select' })
+  console.log(order)
+	$.ajax({
+        url: "http://127.0.0.1:8500/accounts/login/acceptdata/",
+        type: "post",
+        // contentType: 'application/json',
+        data: JSON.stringify(order),
+        success: function(data) {
+           console.log(data);
+            // alert("Order Saved");
+        }
+        // ,
+        // error: function() {
+        //   // alert("Something went wrong");
+        // }
+      })
+   alert("Order Saved");
+});
+</script>
+</html>

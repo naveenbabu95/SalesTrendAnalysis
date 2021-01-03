@@ -1,0 +1,6 @@
+myvenv/
+AnalyticsService/__pycache__/
+DatabaseService/__pycache__/
+InputService/__pycache__/
+OutputService/__pycache__/
+Dashboard/Handling-User-Auth-master/accounts/__pycache__/

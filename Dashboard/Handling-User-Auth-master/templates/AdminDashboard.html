@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin</title>
+</head>
+
+<body>
+{% csrf_token %}
+
+<h1>Admin</h1>
+<p>Admin</p>
+<input type=button onClick="parent.location='http://127.0.0.1:8500/accounts/logout/'" value='Logout'>
+
+User 1 :<br><br>
+<table id="mytable" border= "2" class="table table-hover">
+                <thead>
+                    <tr class="tr-1">
+                    	<!-- ask Pooja -->
+                        <th id="Service">Service</th>
+                        <th id="CPU_Utilization">Request Status</th>
+                        <th id="Memory_Utilization">Memory Utilization</th>
+                        <th id=""Disk_Space_Utilization>Disk Space Utilization</th>
+                        <th id="System_Up_Time">System Up Time</th>
+                        <th id="exp-header">Others</th>
+                        <th id="exp-header">Others</th>
+                    </tr>
+
+<!--
+                    <tr class="R">
+                        <th id="id-filter"><input type="text"></th>
+                        <th id="fs-filter"><input type="text"></th>
+                        <th id="ls-filter"><input type="text"></th>
+                        <th id="dob-filter"><input type="text"></th>
+                        <th id="func-filter"><input type="text"></th>
+                        <th id="exp-filter"><input type="text"></th>
+                    </tr>
+-->
+                </thead>
+                <tbody id="tbody-staff">
+                    <tr class="tr-1">
+                        <th id="Service1">Input Service</th>
+                        <th>{{Input0}}</th>
+                        <th>{{Input1}}</th>
+                        <th>{{Input2}}</th>
+                        <th>{{Input3}}</th>
+                        <th>{{Input4}}</th>
+                        <th>{{Input5}}</th>
+                    </tr>
+                    <tr class="tr-1">
+                        <th id="Service2">Database Service</th>
+                        <th>{{Database0}}</th>
+                        <th>{{Database1}}</th>
+                        <th>{{Database2}}</th>
+                        <th>{{Database3}}</th>
+                        <th>{{Database4}}</th>
+                        <th>{{Database5}}</th>
+                    </tr>
+                    <tr class="tr-1">
+                        <th id="Service3">Analytics Service</th>
+                        <th>{{Analytics0}}</th>
+                        <th>{{Analytics1}}</th>
+                        <th>{{Analytics2}}</th>
+                        <th>{{Analytics3}}</th>
+                        <th>{{Analytics4}}</th>
+                        <th>{{Analytics5}}</th>
+                    </tr>
+                    <tr>
+                        <th id="Service4">Output Service</th>
+                        <th>{{Output0}}</th>
+                        <th>{{Output1}}</th>
+                        <th>{{Output2}}</th>
+                        <th>{{Output3}}</th>
+                        <th>{{Output4}}</th>
+                        <th>{{Output5}}</th>
+                    </tr>
+                </tbody>
+            </table>
+
+</body>
+
+</html>
